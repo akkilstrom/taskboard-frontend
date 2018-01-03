@@ -23,28 +23,24 @@ export default {
 };
 </script>
 
-<style scoped>
-  /*@import '../assets/scss/style.scss';*/
+<style lang='scss' scoped>
+  @import '../assets/scss/style.scss';
   .project-container {
-    /*padding-top: 8rem;*/
+    padding-top: 4rem;
+    width: 90%;
   }
 
   select {
-    /*position: relative;
-    overflow: hidden;
-    display: block;
-    margin: auto;*/
     height: 3.5rem;
     width: 100%;
     max-width: 20rem;
-    font-size: 1.6rem;
+    font-size: 1.1rem;
     box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.03), 
                 0 3px 6px 0 rgba(0, 0, 0, 0.03), 
                 0 1px 2px 0 rgba(0, 0, 0, 0.10);
     border: none;
     outline: none;
-    border-radius: 0px;
-    text-align: center;
+    border-radius: .20rem;
   }
 
   option {

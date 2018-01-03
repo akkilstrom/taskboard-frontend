@@ -26,11 +26,16 @@ export default {
   @import '../assets/scss/style.scss';
 
   header {
-    padding: 1rem 1rem;
+    padding: 1rem 0 1rem 1rem;
+    width: 100%;
     position: fixed;
+    text-align: left;
 
     @include breakpoint(medium) {
-      padding: 2rem 4rem;
+      padding: 2rem 0 2rem 2rem;
+    }
+    @include breakpoint(large) {
+      padding: 2rem 0 2rem 4rem;
     }
   }
 

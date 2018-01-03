@@ -23,11 +23,9 @@ export default {
   @import '../assets/scss/style.scss';
 
 	footer {
-    // background: lightgreen;
-    padding: 4rem 0 2rem 0;
+    padding: 4rem 0 1rem 0;
     text-align: center;
     bottom: 0;
-    // position: fixed;
     width: 100%;
   }
 

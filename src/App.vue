@@ -33,17 +33,18 @@ export default {
 
   body, html{
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    text-align: center;
     width:100%;
     background: linear-gradient(#AFD1DE, #FAF8E1);
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: $font-family-body;
-    color: #2c3e50;
+    color: $color-primary;
     height: 100%;
 
     @include breakpoint(medium) {
-      background: deeppink;
+      // background: deeppink;
     }
 
     @include breakpoint(large) {
@@ -62,7 +63,8 @@ export default {
   #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center; 
+    text-align: center;
+    margin: auto; 
   }
 
   h1 {
@@ -90,6 +92,9 @@ export default {
   }
 
   main {
+    margin: auto;
+    width: 100%;
+    max-width: 70rem;
     padding-top: 10rem;
     min-height: 40rem;
     display: flex;
