@@ -80,15 +80,7 @@ export default new Vuex.Store({
   // },
 
   // getters: {
-  //   //TODO:Implement getters
-  //   // statusOfTasks: state => {
-  //   //   return state.tasks.filter(task => task.status)
-  //   // }
-  //   statusOfTasks: function (tasks) {
-  //     return tasks.filter(function(status) {
-  //       return status === 'to do';
-  //     })
-  //   }
+  
   // },
 
   // mutations: {

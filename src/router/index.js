@@ -3,7 +3,6 @@ import Router from 'vue-router';
 import Login from '@/components/Login';
 import Projects from '@/components/Projects';
 import Tasks from '@/components/Tasks';
-import SingleTask from '@/components/SingleTask';
 
 Vue.use(Router);
 
@@ -28,11 +27,6 @@ export default new Router({
       path: '/tasks',
       name: 'tasks',
       component: Tasks,
-    },
-    {
-      path: '/tasks/:id',
-      name: 'singletask',
-      component: SingleTask,
-    },
+    }
   ],
 });
