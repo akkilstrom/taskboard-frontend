@@ -2,9 +2,9 @@
   <section class='project-container'>
     <h1>Choose the project down below</h1>
     <form action='#'>
-      <select name='projects' id='projects' required>
-        <option value='' disabled selected hidden>Please choose...</option>
-        <option v-for='project in projects' :key='project.id'>
+      <select name='projects' id='projects' v-on:change='changeRoute' v-model="selectedValue" required>
+        <option value='' disabled selected hidden >Please choose...</option>
+        <option v-for='project in projects' :value='project.id' :key='project.id'>
           <span class='drop-down'>{{ project.name }}</span>
         </option> 
       </select>
@@ -15,9 +15,34 @@
 <script>
 import axios from 'axios';
 export default {
+  data() {
+    return { 
+      projects: [],
+      selectedValue: 0
+    }
+  },
+  mounted() {
+    axios.get('http://admin.taskboard.app/api/projects', {
+      auth: {username: 'anna', password: 'test123'}})
+      .then(response => {
+        this.$set(this._data, 'projects', response.data)
+    });
+  },
   computed: {
-    projects() {
-      return this.$store.state.projects;
+  	selectedProject() {
+      return this.projects.find(project => project.id === this.selectedValue)
+    }
+  },
+  created() {
+  	// set the selected project's id
+    this.selectedValue = this.project.id
+  },
+  methods: {
+    onChange() {
+	    this.$emit('input', this.selectedProject)
+    },
+    changeRoute() {
+      this.$router.push({path:'/projects/' + this.selectedValue, params: this.selectedValue})
     }
   }
 };

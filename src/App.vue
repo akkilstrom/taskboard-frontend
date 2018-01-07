@@ -1,10 +1,10 @@
 <template>
   <div id='app'>
-    <app-header></app-header>
+    <v-header></v-header>
     <main>
       <router-view></router-view>
     </main>
-    <app-footer></app-footer>
+    <v-footer></v-footer>
   </div>
 </template>
 
@@ -16,16 +16,29 @@ import Login from './components/Login';
 import Projects from './components/Projects';
 import Tasks from './components/Tasks';
 import Footer from './components/Footer';
+import axios from 'axios';
 
 export default {
-  name: 'app',
+  name: 'v',
   components: {
-    'app-header': Header,
-    'app-footer': Footer,
-    'app-login': Login,
-    'app-projects': Projects,
-    'app-tasks': Tasks,
+    'v-header': Header,
+    'v-footer': Footer,
+    'v-login': Login,
+    'v-projects': Projects,
+    'v-tasks': Tasks,
   },
+  // data() {
+  //   return { 
+  //     projects: []
+  //   }
+  // },
+  // mounted() {
+  //   axios.get('http://admin.taskboard.app/api/projects', {
+  //     auth: {username: 'anna', password: 'test123'}})
+  //     .then(response => {
+  //       this.$set(this._data, 'projects', response.data)
+  //   });
+  // },
 };
 </script>
 <style lang='scss'>
@@ -36,7 +49,7 @@ export default {
     margin: 0 auto;
     text-align: center;
     width:100%;
-    background: linear-gradient(#AFD1DE, #FAF8E1);
+    background: linear-gradient(lightseagreen, #FAF8E1); //#AFD1DE
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: $font-family-body;
@@ -48,7 +61,7 @@ export default {
     }
 
     @include breakpoint(large) {
-      background: lightseagreen;
+      // background: lightseagreen;
     }
   }
 
@@ -101,5 +114,24 @@ export default {
     flex-flow: column wrap;
     align-items: center;
   }
+//PLACERA KNAPPSTYLING HÄR!!
+  // button {
+  //   border: none;
+  //   outline: none;
+  //   width: 100%;
+  //   margin-top: 2rem;
+  //   height: 3.5rem;
+  //   font-size: 1.1rem;
+  //   cursor: pointer;
+  //   text-transform: uppercase;
+  //   font-family: $font-family-body;
+  //   background-color: $color-primary;
+  //   color: $color-secondary;
+  //   border-radius: .20rem;
+
+  //   &:hover {
+  //     background-color: $hover-color;
+  //   }
+  // }
 
 </style>

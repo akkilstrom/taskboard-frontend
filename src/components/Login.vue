@@ -2,11 +2,11 @@
 	<section class='login-container'>
 		<h1>Login</h1>
     <form action='#'>
-      <label for='name'>Name</label>
-      <input type='text'><br>
+      <label for='email'>E-mail</label>
+      <input type='email'><br>
       <label for='password'>Password</label>
       <input type='password'><br>
-      <button>name</button>
+      <router-link to='/projects'> <button>Login</button></router-link>
     </form>
 	</section>
 </template>
@@ -65,7 +65,7 @@ export default {
     height: 3.5rem;
     font-size: 1.1rem;
     cursor: pointer;
-    // text-transform: uppercase;
+    text-transform: uppercase;
     font-family: $font-family-body;
     background-color: $color-primary;
     color: $color-secondary;
