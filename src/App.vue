@@ -83,9 +83,9 @@ export default {
   h1 {
     font-size: 1.6rem;
 
-    @include breakpoint(medium) {
-      font-size: 1.8rem;
-    }
+    // @include breakpoint(medium) {
+    //   font-size: 1.8rem;
+    // }
 
     @include breakpoint(large) {
       font-size: 2rem;
@@ -93,14 +93,26 @@ export default {
   }
 
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 
-    @include breakpoint(medium) {
-      font-size: 1.5rem;
-    }
+    // @include breakpoint(medium) {
+    //   font-size: 1.5rem;
+    // }
 
     @include breakpoint(large) {
       font-size: 1.7rem;
+    }
+  }
+
+    h3 {
+    font-size: 1.2rem;
+
+    // @include breakpoint(medium) {
+    //   font-size: 1.3rem;
+    // }
+
+    @include breakpoint(large) {
+      font-size: 1.5rem;
     }
   }
 

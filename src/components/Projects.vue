@@ -14,17 +14,19 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   data() {
     return { 
       projects: [],
-      selectedValue: 0
+      selectedValue: 0,
     }
   },
   mounted() {
     axios.get('http://admin.taskboard.app/api/projects', {
       auth: {username: 'anna', password: 'test123'}})
       .then(response => {
+        console.log('projekt', response);
         this.$set(this._data, 'projects', response.data)
     });
   },
@@ -38,11 +40,23 @@ export default {
     this.selectedValue = this.project.id
   },
   methods: {
-    onChange() {
-	    this.$emit('input', this.selectedProject)
+    updateProject() {
+      this.$store.commit('setSelectedProject', this.selectedValue);
+
+      console.log('denna körs', this.selectedValue)
+    },
+    updateName() {
+      this.projects.forEach((project) => {
+        if(project.id === this.selectedValue) {
+          this.$store.commit('setProjectName', project.name);
+        }
+      })
     },
     changeRoute() {
-      this.$router.push({path:'/projects/' + this.selectedValue, params: this.selectedValue})
+      this.$router.push({path:'/projects/' + this.selectedValue, params: this.selectedValue })
+
+      this.updateProject(this.selectedValue);
+      this.updateName();
     }
   }
 };

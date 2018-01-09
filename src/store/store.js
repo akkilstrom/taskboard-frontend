@@ -10,8 +10,18 @@ export default new Vuex.Store({
     logo: 'The Taskboard',
     copyright: 'Copyright 2017',
     cardinfo: 'move me to change status',
+    selectedProject: null,
+    projectName: '',
     // tasks: [],
   },
+  mutations: {
+    setSelectedProject(state, project) {
+      state.selectedProject = project;
+    },
+    setProjectName(state, name){
+      state.projectName = name;
+    }
+  }
   // actions: {
   //   fetchAllTasks( { commit }) {
   //     axios.get('http://admin.taskboard.app/api/tasks', {

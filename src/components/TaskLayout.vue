@@ -6,7 +6,6 @@
         <h3>{{ task.task }}</h3>
         <p><strong>Project owner:</strong>{{ task.user_id }}</p>
         <p><strong>Status:</strong>{{ task.status }}</p>
-        <!--<to-do-icon></to-do-icon>-->
         <p><strong>Importance:</strong>{{ task.importance }}</p>
         <p><strong>Assigned by:</strong>{{ task.assigned_by }}</p>
       </div>
@@ -66,6 +65,10 @@ export default {
                 0 1px 2px 0 rgba(0, 0, 0, 0.10);
     margin: 0.8rem 0;
     cursor: pointer;
+
+    &:hover {
+      background-color: #e2e4e6; //#FAF8E1
+    }
 
     @include breakpoint(medium) {
       margin: 0.8rem 0.4rem;

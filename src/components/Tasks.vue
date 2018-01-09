@@ -1,10 +1,10 @@
 <template>
   <section class='task-page'>   
-    <h1>Tasks of '{{ selectedValue }}' </h1> 
+    <h1>Tasks of {{ selectedProjectName }} </h1> 
     <div class='task-board'>
-      <app-tasklayout :tasks='tasks' statusText='To do'></app-tasklayout>
-      <app-tasklayout :tasks='tasks' statusText='In progress'></app-tasklayout>
-      <app-tasklayout :tasks='tasks' statusText='Done'></app-tasklayout>
+      <app-tasklayout :tasks='tasksToDo' statusText='To do'></app-tasklayout>
+      <app-tasklayout :tasks='tasksProgress' statusText='In progress'></app-tasklayout>
+      <app-tasklayout :tasks='tasksDone' statusText='Done'></app-tasklayout>
     </div> <!--end of task-board-->   
     <!--<div class='task-card' v-for='task in tasks' :key='task.id' v-on:click='task.show = !task.show'>-->
   </section>
@@ -20,42 +20,65 @@ import axios from 'axios';
 
 export default {
   name: 'Tasks',
-  props: ['selectedValue'],
   data() {
     return { 
       tasks: [],
-      // tasksToDo: [],
-      // tasksProgress: [],
-      // tasksDone: [],
+      tasksToDo: [],
+      tasksProgress: [],
+      tasksDone: [],
     }
   },
-  // computed: {
-  //   tasksTodo() {
-  //     return this.$store.getters.tasksTodo
-  //   } 
-  // },
+  computed: {
+    selectedProject() {
+      return this.$store.state.selectedProject;
+    },
+    selectedProjectName() {
+      return this.$store.state.projectName;
+    }
+  },
   components: {
     'app-tasklayout': TaskLayout,
     draggable
   },
-  // mounted: function () {
-  //   this.$store.dispatch('fetchTasks');
-  // },
   mounted() {
+    // http://annakilstrom.nu/taskboard_admin/
     axios.get('http://admin.taskboard.app/api/tasks', {
       auth: {username: 'anna', password: 'test123'}})
       .then(response => {
         console.log(response.data)
-        this.$set(this._data, 'tasks', response.data)
+        this.fetchProjectTasks(response.data);
     })
+  },
+  methods: {
+    fetchProjectTasks(response) {
+      response.forEach((task) => {
+        if(task.project_id === this.selectedProject)
+        this.tasks.push(task);
+        console.log(this.tasks);
+      });
+      this.sortTasks(this.tasks);
+
+    },
+    sortTasks(tasks) {
+      console.log('todo', tasks);
+      tasks.forEach((task) => {
+        if(task.status === 0) {
+          this.tasksToDo.push(task)
+        } 
+        if(task.status === 1) {
+          this.tasksProgress.push(task) 
+        }
+        if(task.status === 2) {
+          this.tasksDone.push(task) 
+        }
+      })
+    }
   }
 };
 </script>
 
 <style lang='scss' scoped>
-/*BEHÖVS DENNA IMPORTERAS 2 GGR*/
-  @import '../assets/scss/mixins.scss';
-  @import '../assets/scss/variables.scss';
+  @import '../assets/scss/style.scss';
   .task-page {
     display: flex;
     flex-flow: column wrap;
