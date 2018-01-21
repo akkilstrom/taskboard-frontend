@@ -4,10 +4,11 @@
     <draggable v-model='tasks' class='task-container' :options="{}" :element="'div'">
       <div class='task-card' v-for="task in tasks" :key='task.id'>
         <h3>{{ task.task }}</h3>
-        <p><strong>Project owner:</strong>{{ task.user_id }}</p>
+        <!-- <p><strong>Project owner:</strong>{{ task.user_id }}</p> -->
         <p><strong>Status:</strong>{{ task.status }}</p>
-        <p><strong>Importance:</strong>{{ task.importance }}</p>
-        <p><strong>Assigned by:</strong>{{ task.assigned_by }}</p>
+        <p><strong>Importance: </strong>{{ task.importance }}</p>
+        <p><strong>Assigned by: </strong>{{ task.assigned_by }}</p> 
+             
       </div>
     </draggable> 
   </div> 
@@ -15,20 +16,14 @@
 
 <script>
 import draggable from 'vuedraggable';
-import { mapGetters, mapActions } from 'vuex';
+// import { mapGetters, mapActions } from 'vuex';
 import Store from '@/store/store.js';
-import { mapState } from 'vuex'
-// import ToDoIcon from './assets/icons/todo-icon.svg';
-// import ProgressIcon from './assets/icons/progress-icon.svg';
-// import DoneIcon from './assets/icons/done-icon.svg';
+// import { mapState } from 'vuex'
 
 export default {
   props: ['tasks', 'statusText'],
   components: {
     draggable,
-    // 'to-do-icon': ToDoIcon,
-    // 'progress-icon': ProgressIcon,
-    // 'done-icon': DoneIcon,
   },
 };
 
@@ -44,6 +39,7 @@ export default {
     // border: 1px solid red;
     flex-grow: 1;
     width: 100%;
+    // background-color: rgba(0,0,0,.4);
   }
 
   .task-container {
@@ -58,22 +54,42 @@ export default {
     box-sizing: border-box;
     background-color: white;
     text-align: left;
-    // width: 20rem;
     padding: 2rem 2rem 2rem 2rem;
     box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.03), 
                 0 3px 6px 0 rgba(0, 0, 0, 0.03), 
                 0 1px 2px 0 rgba(0, 0, 0, 0.10);
     margin: 0.8rem 0;
     cursor: pointer;
+    // height: 10rem;
 
     &:hover {
       background-color: #e2e4e6; //#FAF8E1
+    }
+
+    &_extended {
+
+    }
+    p {
+      margin: 0;
+      line-height: 1.5;
+      font-size: 1rem;
+
+      @include breakpoint(medium) {
+        font-size: 0.8rem;
+      }
     }
 
     @include breakpoint(medium) {
       margin: 0.8rem 0.4rem;
       padding: 1rem 1rem 1rem 1rem;
     }
+  }
+
+  .meta-container {
+    display: flex;
+    flex-flow: row wrap;
+    // border: 1px solid red;
+    justify-content: space-between;
   }
 
   h3 {

@@ -42,7 +42,6 @@ export default {
   methods: {
     updateProject() {
       this.$store.commit('setSelectedProject', this.selectedValue);
-
       console.log('denna körs', this.selectedValue)
     },
     updateName() {

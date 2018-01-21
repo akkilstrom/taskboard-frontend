@@ -14,9 +14,6 @@
 import TaskLayout from './TaskLayout';
 import draggable from 'vuedraggable';
 import axios from 'axios';
-// import { mapGetters, mapActions } from 'vuex';
-// import Store from '@/store/store.js';
-// import { mapState } from 'vuex'
 
 export default {
   name: 'Tasks',
@@ -28,6 +25,11 @@ export default {
       tasksDone: [],
     }
   },
+  components: {
+    'app-tasklayout': TaskLayout,
+    draggable
+  },
+
   computed: {
     selectedProject() {
       return this.$store.state.selectedProject;
@@ -35,10 +37,6 @@ export default {
     selectedProjectName() {
       return this.$store.state.projectName;
     }
-  },
-  components: {
-    'app-tasklayout': TaskLayout,
-    draggable
   },
   mounted() {
     // http://annakilstrom.nu/taskboard_admin/
@@ -50,17 +48,17 @@ export default {
     })
   },
   methods: {
+    // Fetching the tasks that belongs to the selected project
     fetchProjectTasks(response) {
       response.forEach((task) => {
         if(task.project_id === this.selectedProject)
         this.tasks.push(task);
-        console.log(this.tasks);
       });
       this.sortTasks(this.tasks);
-
     },
+
+    // Depending on the status push to correct array
     sortTasks(tasks) {
-      console.log('todo', tasks);
       tasks.forEach((task) => {
         if(task.status === 0) {
           this.tasksToDo.push(task)
@@ -89,8 +87,6 @@ export default {
     margin: 2rem auto;
     padding: 0 0 4rem 0;
     box-sizing: border-box;
-    /*border: 3px solid orange;*/
-    /*border: 1px solid red;*/
   }
 
   .task-board {
@@ -98,13 +94,12 @@ export default {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-    // border: 3px solid green;
-    padding: 0 0.4rem;
-
+    padding: 0 0.8rem;
 
     @include breakpoint(medium) {
       flex-flow: row nowrap;
       align-items: flex-start;
+      padding: 0 0.4rem;
     }
   }
 

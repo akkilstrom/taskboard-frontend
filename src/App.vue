@@ -27,18 +27,6 @@ export default {
     'v-projects': Projects,
     'v-tasks': Tasks,
   },
-  // data() {
-  //   return { 
-  //     projects: []
-  //   }
-  // },
-  // mounted() {
-  //   axios.get('http://admin.taskboard.app/api/projects', {
-  //     auth: {username: 'anna', password: 'test123'}})
-  //     .then(response => {
-  //       this.$set(this._data, 'projects', response.data)
-  //   });
-  // },
 };
 </script>
 <style lang='scss'>
@@ -105,15 +93,15 @@ export default {
   }
 
     h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 
     // @include breakpoint(medium) {
     //   font-size: 1.3rem;
     // }
 
-    @include breakpoint(large) {
-      font-size: 1.5rem;
-    }
+    // @include breakpoint(large) {
+    //   font-size: 1.3rem;
+    // }
   }
 
   main {

@@ -23,30 +23,10 @@ export default new Vuex.Store({
     }
   }
   // actions: {
-  //   fetchAllTasks( { commit }) {
-  //     axios.get('http://admin.taskboard.app/api/tasks', {
-  //       auth: {username: 'anna', password: 'test123'}
-  //     })
-  //     .then(response => {
-  //       commit('setTasks', { list: response.data })
-  //     });
-  //   }
+  // Place axios here instead
   // },
-  // mutations: {
-  //   setTasks: (state, { list }) => {
-  //     state.tasks = list
-  //   },
-  // },
+  
   // getters: {
-  //   tasksTodo: state => { 
-  //     return state.tasks.filter(task => task.status === 0);
-  //   },
-  //   tasksInProgress: state => {
-  //     return state.tasks.filter(task => task.status === 1);
-  //   },
-  //   tasksDone: state => {
-  //     return state.tasks.filter(task => task.status === 2);
-  //   }
   // }
 });
   
