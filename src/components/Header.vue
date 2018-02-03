@@ -8,11 +8,9 @@
 </template>
 
 <script>
-// import Navigation from './components/Navigation';
 
 export default {
   components: {
-    // 'app-nav': Navigation,
   },
   computed: {
     logo() {
@@ -48,5 +46,4 @@ export default {
     font-family: 'Pacifico';
     letter-spacing: 0.1rem;
   }
-
 </style>

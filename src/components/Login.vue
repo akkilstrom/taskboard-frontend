@@ -66,13 +66,13 @@ export default {
     font-size: 1.1rem;
     cursor: pointer;
     text-transform: uppercase;
-    font-family: $font-family-body;
+    font-family: $ff-body;
     background-color: $color-primary;
     color: $color-secondary;
     border-radius: .20rem;
 
     &:hover {
-      background-color: $hover-color;
+      background-color: $hover-c-primary;
     }
   }
 </style>

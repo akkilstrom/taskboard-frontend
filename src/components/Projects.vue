@@ -1,5 +1,5 @@
 <template>
-  <section class='project-container'>
+  <section class='project-page'>
     <h1>Choose the project down below</h1>
     <form action='#'>
       <select name='projects' id='projects' v-on:change='changeRoute' v-model="selectedValue" required>
@@ -23,6 +23,8 @@ export default {
     }
   },
   mounted() {
+    // http://annakilstrom.nu/taskboard_admin/
+    // http://admin.taskboard.app/api/projects
     axios.get('http://admin.taskboard.app/api/projects', {
       auth: {username: 'anna', password: 'test123'}})
       .then(response => {
@@ -38,6 +40,8 @@ export default {
   created() {
   	// set the selected project's id
     this.selectedValue = this.project.id
+    console.log('project id:et', this.selectedValue)
+
   },
   methods: {
     updateProject() {
@@ -52,8 +56,7 @@ export default {
       })
     },
     changeRoute() {
-      this.$router.push({path:'/projects/' + this.selectedValue, params: this.selectedValue })
-
+      this.$router.push({path:'/projects/' + this.selectedValue, params: this.selectedValue });
       this.updateProject(this.selectedValue);
       this.updateName();
     }
@@ -63,22 +66,10 @@ export default {
 
 <style lang='scss' scoped>
   @import '../assets/scss/style.scss';
-  .project-container {
+  
+  .project-page {
     padding-top: 4rem;
     width: 90%;
-  }
-
-  select {
-    height: 3.5rem;
-    width: 100%;
-    max-width: 20rem;
-    font-size: 1.1rem;
-    box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.03), 
-                0 3px 6px 0 rgba(0, 0, 0, 0.03), 
-                0 1px 2px 0 rgba(0, 0, 0, 0.10);
-    border: none;
-    outline: none;
-    border-radius: .20rem;
   }
 
   option {

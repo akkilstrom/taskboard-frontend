@@ -37,10 +37,10 @@ export default {
     margin: 0 auto;
     text-align: center;
     width:100%;
-    background: linear-gradient(lightseagreen, #FAF8E1); //#AFD1DE
+    background: linear-gradient( $bg-primary , $bg-secondary); //#AFD1DE
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: $font-family-body;
+    font-family: $ff-body;
     color: $color-primary;
     height: 100%;
 
@@ -51,10 +51,6 @@ export default {
     @include breakpoint(large) {
       // background: lightseagreen;
     }
-  }
-
-  html {
-    
   }
 
   *, ::after, ::before {
@@ -104,6 +100,10 @@ export default {
     // }
   }
 
+  a {
+    text-decoration: none;
+    color: $color-primary;
+  }
   main {
     margin: auto;
     width: 100%;
@@ -113,6 +113,19 @@ export default {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
+  }
+
+  select {
+    height: 3.5rem;
+    width: 100%;
+    max-width: 20rem;
+    font-size: 1.1rem;
+    box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.03) inset, 
+                0 3px 6px 0 rgba(0, 0, 0, 0.03) inset, 
+                0 1px 2px 0 rgba(0, 0, 0, 0.10) inset;
+    border: none;
+    outline: none;
+    border-radius: 0px;
   }
 //PLACERA KNAPPSTYLING HÄR!!
   // button {

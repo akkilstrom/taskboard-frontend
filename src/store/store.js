@@ -13,6 +13,8 @@ export default new Vuex.Store({
     selectedProject: null,
     projectName: '',
     // tasks: [],
+    selectedTask: null,
+    showTaskModal: false
   },
   mutations: {
     setSelectedProject(state, project) {
@@ -20,7 +22,10 @@ export default new Vuex.Store({
     },
     setProjectName(state, name){
       state.projectName = name;
-    }
+    },
+    // updateTaskStatus(state, task) {
+    //   state.selectedTask = 
+    // }
   }
   // actions: {
   // Place axios here instead

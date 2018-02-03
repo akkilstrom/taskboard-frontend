@@ -1,9 +1,16 @@
 // Colors
+$bg-primary: lightseagreen;
+$bg-secondary: #FAF8E1;
+
 $color-primary: #2c3e50;
 $color-secondary: #fff;
-$hover-color: #3a4d5e;
+
+$hover-c-primary: #3a4d5e;
+$hover-c-secondary: $bg-primary;
+
+
 
 // Typography
-$font-family-body: 'Roboto mono', Helvetica, Arial, sans-serif;
+$ff-body: 'Roboto mono', Helvetica, Arial, sans-serif;
 $font-family-logo:'Pacifico';
 
