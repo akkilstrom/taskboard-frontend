@@ -43,14 +43,6 @@ export default {
     font-family: $ff-body;
     color: $color-primary;
     height: 100%;
-
-    @include breakpoint(medium) {
-      // background: deeppink;
-    }
-
-    @include breakpoint(large) {
-      // background: lightseagreen;
-    }
   }
 
   *, ::after, ::before {
@@ -67,10 +59,6 @@ export default {
   h1 {
     font-size: 1.6rem;
 
-    // @include breakpoint(medium) {
-    //   font-size: 1.8rem;
-    // }
-
     @include breakpoint(large) {
       font-size: 2rem;
     }
@@ -79,10 +67,6 @@ export default {
   h2 {
     font-size: 1.4rem;
 
-    // @include breakpoint(medium) {
-    //   font-size: 1.5rem;
-    // }
-
     @include breakpoint(large) {
       font-size: 1.7rem;
     }
@@ -90,20 +74,13 @@ export default {
 
     h3 {
     font-size: 1.1rem;
-
-    // @include breakpoint(medium) {
-    //   font-size: 1.3rem;
-    // }
-
-    // @include breakpoint(large) {
-    //   font-size: 1.3rem;
-    // }
   }
 
   a {
     text-decoration: none;
     color: $color-primary;
   }
+
   main {
     margin: auto;
     width: 100%;
@@ -131,24 +108,5 @@ export default {
     outline: none;
     border-radius: 0px;
   }
-//PLACERA KNAPPSTYLING HÄR!!
-  // button {
-  //   border: none;
-  //   outline: none;
-  //   width: 100%;
-  //   margin-top: 2rem;
-  //   height: 3.5rem;
-  //   font-size: 1.1rem;
-  //   cursor: pointer;
-  //   text-transform: uppercase;
-  //   font-family: $font-family-body;
-  //   background-color: $color-primary;
-  //   color: $color-secondary;
-  //   border-radius: .20rem;
-
-  //   &:hover {
-  //     background-color: $hover-color;
-  //   }
-  // }
-
+  
 </style>

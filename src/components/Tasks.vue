@@ -116,7 +116,6 @@ export default {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  /*justify-content: center;*/
   width: 90%;
   max-width: 1200px;
   margin: 2rem auto;
@@ -129,12 +128,10 @@ export default {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  // padding: 0 0.8rem;
 
   @include breakpoint(medium) {
     flex-flow: row nowrap;
     align-items: flex-start;
-    // padding: 0 0.4rem;
   }
 }
 

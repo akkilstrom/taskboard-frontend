@@ -170,11 +170,9 @@ export default {
 }
 
 .edit-container {
-  // margin-top: 1rem;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
-  // border: 1px solid red;
 }
 
 .edit-btn {

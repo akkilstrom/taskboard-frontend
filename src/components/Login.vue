@@ -15,25 +15,6 @@
 import axios from 'axios';
 
 export default {
-  // mounted() {
-  //   // http://annakilstrom.nu/taskboard_admin/
-  //   // http://admin.taskboard.app/api/tasks
-  //   // Makes an ajax request to the server fetching tasks
-  //   axios({
-  //     method: 'get',
-  //     url: 'http://admin.taskboard.app/api/user/',
-  //     params: {
-  //       id: 1
-  //     },
-  //     auth: { username: 'anna', password: 'test123' }
-  //   }).then(response => {
-  //     console.log('USERS', response.data)
-  //     this.fetchProjectTasks(response.data);
-  //   })
-  //   .catch((err) =>{
-  //     console.log(err);
-  //   })
-  // },
 };
 
 </script>
