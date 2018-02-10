@@ -25,28 +25,38 @@ export default {
   mounted() {
     // http://annakilstrom.nu/taskboard_admin/
     // http://admin.taskboard.app/api/projects
-    axios.get('http://admin.taskboard.app/api/projects', {
-      auth: {username: 'anna', password: 'test123'}})
-      .then(response => {
-        console.log('projekt', response);
-        this.$set(this._data, 'projects', response.data)
+    //  axios.get('http://admin.taskboard.app/api/projects', {
+    //   auth: {username: 'anna', password: 'test123'}})
+    //   .then(response => {
+    //     // console.log('projekt', response);
+    //     this.$set(this._data, 'projects', response.data)
+    // })
+    axios({
+      method:'get',
+      url: 'https://annakilstrom.nu/taskboard_admin/api/projects', 
+      // auth: {
+      //   username: 'anna', 
+      //   password: 'test123'
+      // }
+    })
+    .then(response => {
+      this.$set(this._data, 'projects', response.data)
+    })
+    .catch((err) => {
+      console.log(err);
     });
   },
+
   computed: {
   	selectedProject() {
       return this.projects.find(project => project.id === this.selectedValue)
     }
   },
-  created() {
-  	// set the selected project's id
-    this.selectedValue = this.project.id
-    console.log('project id:et', this.selectedValue)
 
-  },
   methods: {
     updateProject() {
       this.$store.commit('setSelectedProject', this.selectedValue);
-      console.log('denna körs', this.selectedValue)
+      // console.log('denna körs', this.selectedValue)
     },
     updateName() {
       this.projects.forEach((project) => {
@@ -68,8 +78,11 @@ export default {
   @import '../assets/scss/style.scss';
   
   .project-page {
-    padding-top: 4rem;
     width: 90%;
+
+    @include breakpoint(medium) {
+      padding-top: 4rem;
+    }
   }
 
   option {

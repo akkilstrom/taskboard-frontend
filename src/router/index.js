@@ -25,13 +25,6 @@ export default new Router({
       component: Projects,
       props: true
     },
-    // {
-    //   path: '/tasks',
-    //   name: 'tasks',
-    //   component: Tasks,
-    //   props: true
-    // },
-    //ÄNDRA TILL NEDAN MED ID FÖR PROJEKTET
     {
       path: '/projects/:id',
       name: 'tasks',

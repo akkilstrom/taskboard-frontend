@@ -2,11 +2,12 @@
   <section class='task-page'>   
     <h1>Tasks of {{ selectedProjectName }} </h1> 
     <div class='task-board'>
-      <v-tasklayout :tasks='tasksToDo' @updateTaskStatus='updateTaskStatus' statusText='To do'></v-tasklayout>
-      <v-tasklayout :tasks='tasksProgress' @updateTaskStatus='updateTaskStatus' statusText='In progress'></v-tasklayout>
-      <v-tasklayout :tasks='tasksDone' @updateTaskStatus='updateTaskStatus' statusText='Done'></v-tasklayout>
+      <v-tasklayout :tasks='tasksToDo' @task-status-updated="onTaskStatusUpdated" statusType='0' statusText='To do'></v-tasklayout>
+      <v-tasklayout :tasks='tasksProgress' @task-status-updated="onTaskStatusUpdated" statusType='1' statusText='In progress'></v-tasklayout>
+      <v-tasklayout :tasks='tasksDone' @task-status-updated="onTaskStatusUpdated" statusType='2' statusText='Done'></v-tasklayout>
     </div> <!--end of task-board-->   
-    <!-- <v-taskmodal v-if='showTaskModal' @close='showTaskModal = false'></v-taskmodal> -->
+    <!-- <v-taskmodal v-if='showModal'></v-taskmodal> -->
+    <!-- <button @click='showModal = true'>Visa Modal</button> -->
   </section>
 </template>
 
@@ -14,7 +15,7 @@
 import TaskLayout from './TaskLayout';
 import draggable from 'vuedraggable';
 import axios from 'axios';
-// import TaskModal from './components/TaskModal';
+import TaskModal from './TaskModal';
 
 export default {
   name: 'Tasks',
@@ -24,16 +25,18 @@ export default {
       tasksToDo: [],
       tasksProgress: [],
       tasksDone: [],
-      selectedTask: 'task.id',
     }
   },
   components: {
     'v-tasklayout': TaskLayout,
-    // 'v-taskmodal': TaskModal,
+    'v-taskmodal': TaskModal,
     draggable
   },
 
   computed: {
+    // showModal() {
+    //   return this.$store.state.showModal;
+    // },
     selectedProject() {
       return this.$store.state.selectedProject;
     },
@@ -47,8 +50,11 @@ export default {
   mounted() {
     // http://annakilstrom.nu/taskboard_admin/
     // http://admin.taskboard.app/api/tasks
-    axios.get('http://admin.taskboard.app/api/tasks', {
-      auth: {username: 'anna', password: 'test123'}
+    // Makes an ajax request to the server fetching tasks
+    axios({
+      method: 'get',
+      url: 'https://annakilstrom.nu/taskboard_admin/api/tasks',
+      // auth: { username: 'anna', password: 'test123' }
     }).then(response => {
       console.log('ALL TASKS', response.data)
       this.fetchProjectTasks(response.data);
@@ -61,44 +67,44 @@ export default {
     // Fetching the tasks that belongs to the selected project
     fetchProjectTasks(response) {
       response.forEach((task) => {
-        if(task.project_id === this.selectedProject)
-        this.tasks.push(task);
+
+        if(parseInt(task.project_id) === parseInt(this.selectedProject)) {
+          console.log(task);
+          this.tasks.push(task);
+        }
       });
       this.sortTasks(this.tasks);
     },
 
     // Depending on the status push to correct array
     sortTasks(tasks) {
+      console.log('hej');
+      this.tasksToDo = [];
+      this.tasksProgress = [];
+      this.tasksDone = [];
       tasks.forEach((task) => {
-        if(task.status === 0) {
+        if(parseInt(task.status) === 0) {
           this.tasksToDo.push(task)
         } 
-        if(task.status === 1) {
+        if(parseInt(task.status) === 1) {
           this.tasksProgress.push(task) 
         }
-        if(task.status === 2) {
+        if(parseInt(task.status) === 2) {
           this.tasksDone.push(task) 
         }
       })
     },
 
-    //Update task status when dragging the task to new status
-    updateTaskStatus(selectedTask, id) {
-      // axios.put('http://admin.taskboard.app/api/tasks/'+selectedTask,{task:status,taskStatus})
-      // .then(response => {
-      //   console.log('response', sresponse);
-      // }).catch((err) => {
-      //   console.log(err);
-      // });
-      //   auth: {username: 'anna', password: 'test123'}
-      // }).then(response => {
-      //   location.reload();
-      // })
-      // .catch((err) =>{
-      //   console.log(err);
-      // })
+    onTaskStatusUpdated(newData){
+      console.log('parent', newData, this, this.__data);
+      this.tasks.map(task => {
+        if(task.id == newData.id) {
+          task.status = newData.status;
+        }
+      });
 
-      console.log('selectedTask', selectedTask)
+      this.sortTasks(this.tasks);
+      // this.$set(this._data, 'tasks', this.tasks);
     }
   }
 };

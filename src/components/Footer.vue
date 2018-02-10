@@ -23,7 +23,7 @@ export default {
   @import '../assets/scss/style.scss';
 
 	footer {
-    padding: 4rem 0 1rem 0;
+    padding: 2rem 0 1rem 0;
     text-align: center;
     bottom: 0;
     width: 100%;

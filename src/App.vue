@@ -19,7 +19,7 @@ import Footer from './components/Footer';
 import axios from 'axios';
 
 export default {
-  name: 'v',
+  name: 'app',
   components: {
     'v-header': Header,
     'v-footer': Footer,
@@ -109,10 +109,14 @@ export default {
     width: 100%;
     max-width: 70rem;
     padding-top: 10rem;
-    min-height: 40rem;
+    min-height: 32rem;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
+
+    @include breakpoint(medium) {
+      min-height: 40rem;
+    }
   }
 
   select {

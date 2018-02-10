@@ -1,5 +1,5 @@
 <template>
-  <transition name='v-modal' class="task-modal">
+  <transition name='v-modal' class="task-modal is-active">
 	  <h2>Hej</h2>
   </transition>
 </template>
@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  
+  name: 'TaskModal',
 };
 </script>
 
